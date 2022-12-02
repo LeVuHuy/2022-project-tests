@@ -14,7 +14,6 @@ ELECTION_TIMEOUT = 2.0
 def node_with_test_topic():
     node = Swarm(PROGRAM_FILE_PATH, 1)[0]
     node.start(ELECTION_TIMEOUT)
-    node.wait_for_flask_startup()
     assert(node.create_topic(TEST_TOPIC).json() == {"success": True})
     yield node
     node.clean()
@@ -24,7 +23,6 @@ def node_with_test_topic():
 def node():
     node = Swarm(PROGRAM_FILE_PATH, 1)[0]
     node.start(ELECTION_TIMEOUT)
-    node.wait_for_flask_startup()
     yield node
     node.clean()
 
