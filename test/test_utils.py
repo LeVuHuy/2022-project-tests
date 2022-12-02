@@ -64,6 +64,7 @@ class Node:
     def restart(self, sleep=0):
         self.clean()
         self.start()
+        self.wait_for_flask_startup()
         time.sleep(sleep)
 
     def wait_for_flask_startup(self):
